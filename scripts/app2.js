@@ -4,7 +4,7 @@
 
 // ── 🔑 JOUW API KEY – plak hier jouw Gemini key ────────────────
 // Haal gratis op via: https://aistudio.google.com → Get API key
-const GEMINI_API_KEY = 'AQ.Ab8RN6JPo6GvLN-LH5YLjcTmk9sAQ6WpGoc6N6tOxae78nAj9g';
+const GEMINI_API_KEY = 'AQ.Ab8RN6LviwEJ0_DwGslbxkZy81JjEdFfR493vMy8tL72UoZPZw';
 
 const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`;
 
