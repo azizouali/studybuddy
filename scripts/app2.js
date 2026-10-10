@@ -6,7 +6,7 @@
 // Haal gratis op via: https://aistudio.google.com → Get API key
 const GEMINI_API_KEY = 'AQ.Ab8RN6K4KCwoMFwLSlRaMeyJKDb4fRDgdqId2xX8zyY2qifBuA';
 
-const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=${GEMINI_API_KEY}`;
+const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`;
 
 // Socratische systeemprompt – het hart van de coach
 const SYSTEM_PROMPT = `Je bent StudyBuddy, een professionele Nederlandse huiswerkcoach voor leerlingen van 12 tot 15 jaar (VMBO, HAVO, VWO).
