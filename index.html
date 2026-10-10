@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyBuddy – Jouw AI Huiswerkcoach</title>
+  <meta name="description" content="StudyBuddy is jouw persoonlijke AI huiswerkcoach voor VMBO, HAVO en VWO leerlingen van 12 tot 15 jaar. Begeleiding, uitleg en oefenen zonder direct antwoorden te geven.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/landing.css">
+</head>
+<body>
+  <!-- Animated background blobs -->
+  <div class="bg-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <nav class="navbar">
+    <div class="nav-brand">
+      <div class="nav-logo">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+          <circle cx="18" cy="18" r="18" fill="url(#grad1)"/>
+          <defs>
+            <linearGradient id="grad1" x1="0" y1="0" x2="36" y2="36">
+              <stop offset="0%" stop-color="#7C3AED"/>
+              <stop offset="100%" stop-color="#C026D3"/>
+            </linearGradient>
+          </defs>
+          <text x="10" y="24" font-size="18" fill="white">🦉</text>
+        </svg>
+      </div>
+      <span class="brand-name">StudyBuddy</span>
+    </div>
+    <div class="nav-links">
+      <a href="#features" class="nav-link">Functies</a>
+      <a href="#how-it-works" class="nav-link">Hoe werkt het?</a>
+      <a href="#pricing" class="nav-link">Prijzen</a>
+      <button class="btn-login" onclick="window.location.href='app.html'">Inloggen</button>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span>✨ Nieuw: AI-gestuurd leren</span>
+        </div>
+        <h1 class="hero-title">
+          Jouw persoonlijke<br>
+          <span class="gradient-text">AI Huiswerkcoach</span>
+        </h1>
+        <p class="hero-subtitle">
+          StudyBuddy helpt jou <strong>echt begrijpen</strong> – niet gewoon antwoorden kopiëren.<br>
+          Voor VMBO, HAVO en VWO leerlingen van 12 t/m 15 jaar.
+        </p>
+        <div class="hero-cta">
+          <button class="btn-primary" onclick="window.location.href='app.html'">
+            <span>Gratis beginnen</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
+          <button class="btn-secondary" onclick="document.getElementById('how-it-works').scrollIntoView({behavior:'smooth'})">
+            Hoe werkt het?
+          </button>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-num">10K+</span>
+            <span class="stat-label">Leerlingen</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num">15+</span>
+            <span class="stat-label">Vakken</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num">4.9⭐</span>
+            <span class="stat-label">Beoordeling</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="phone-mockup">
+          <div class="phone-screen">
+            <div class="chat-demo">
+              <div class="chat-msg ai">
+                <div class="ai-avatar">🦉</div>
+                <div class="msg-bubble">Hoi! Wat wil je vandaag leren? 😊</div>
+              </div>
+              <div class="chat-msg user">
+                <div class="msg-bubble">Ik snap wiskunde niet...</div>
+              </div>
+              <div class="chat-msg ai">
+                <div class="ai-avatar">🦉</div>
+                <div class="msg-bubble">Geen probleem! Welk onderwerp is het? Dan beginnen we stap voor stap 🚀</div>
+              </div>
+              <div class="typing-indicator">
+                <div class="ai-avatar">🦉</div>
+                <div class="typing-dots"><span></span><span></span><span></span></div>
+              </div>
+            </div>
+            <div class="phone-xp-bar">
+              <span>⚡ 250 XP</span>
+              <div class="xp-progress"><div class="xp-fill" style="width:65%"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="floating-card card-1">
+          <span>🏆</span> 7-daagse streak!
+        </div>
+        <div class="floating-card card-2">
+          <span>📊</span> +15 punten vandaag
+        </div>
+        <div class="floating-card card-3">
+          <span>🎯</span> Wiskunde: 8/10
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+      <div class="section-header">
+        <h2>Alles wat je nodig hebt</h2>
+        <p>StudyBuddy combineert de beste leerstrategieën in één app</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon" style="background: linear-gradient(135deg, #7C3AED, #A855F7)">🤖</div>
+          <h3>AI Tutor</h3>
+          <p>Socratische begeleiding – de AI geeft nooit direct antwoordlen, maar helpt je zelf denken</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background: linear-gradient(135deg, #0EA5E9, #38BDF8)">📸</div>
+          <h3>Foto Upload</h3>
+          <p>Maak een foto van je huiswerk en de AI analyseert het vak, onderwerp en moeilijkheidsgraad</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background: linear-gradient(135deg, #F59E0B, #FBBF24)">📝</div>
+          <h3>Samenvattingen</h3>
+          <p>Upload een hoofdstuk en ontvang een heldere samenvatting met kernbegrippen en toetskaarten</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background: linear-gradient(135deg, #10B981, #34D399)">🎯</div>
+          <h3>Oefentoetsen</h3>
+          <p>Genereer oefentoetsen op maat met meerkeuze- en open vragen, inclusief uitleg bij fouten</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background: linear-gradient(135deg, #EF4444, #F87171)">📅</div>
+          <h3>Studieplanner</h3>
+          <p>Voer je toetsdatum in en ontvang een dagelijks studieplan met haalbare doelen</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background: linear-gradient(135deg, #EC4899, #F472B6)">👨‍👩‍👧</div>
+          <h3>Oudermodule</h3>
+          <p>Volg de voortgang van je kind: sessies, tijd besteed, sterke punten en aandachtspunten</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="how-it-works" id="how-it-works">
+      <div class="section-header">
+        <h2>Zo werkt het</h2>
+        <p>In 3 stappen aan de slag</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h3>Upload je huiswerk</h3>
+            <p>Maak een foto, plak een screenshot of typ je vraag in</p>
+          </div>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h3>AI analyseert & begeleidt</h3>
+            <p>StudyBuddy legt uit, stelt vragen en helpt je zelf tot het antwoord te komen</p>
+          </div>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h3>Oefen & groei</h3>
+            <p>Verdien XP, badges en houd je streak bij terwijl je beter wordt</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Subjects -->
+    <section class="subjects">
+      <div class="section-header">
+        <h2>Alle vakken</h2>
+        <p>Van wiskunde tot Frans – we dekken alles</p>
+      </div>
+      <div class="subjects-grid">
+        <div class="subject-chip">📐 Wiskunde</div>
+        <div class="subject-chip">🔬 Biologie</div>
+        <div class="subject-chip">🌍 Aardrijkskunde</div>
+        <div class="subject-chip">📚 Nederlands</div>
+        <div class="subject-chip">🇬🇧 Engels</div>
+        <div class="subject-chip">🇩🇪 Duits</div>
+        <div class="subject-chip">🇫🇷 Frans</div>
+        <div class="subject-chip">⚗️ Scheikunde</div>
+        <div class="subject-chip">⚡ Natuurkunde</div>
+        <div class="subject-chip">📜 Geschiedenis</div>
+        <div class="subject-chip">💰 Economie</div>
+        <div class="subject-chip">🎨 Meer...</div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing" id="pricing">
+      <div class="section-header">
+        <h2>Kies jouw plan</h2>
+        <p>Betaalbaar voor elk gezin</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="plan-name">Gratis</div>
+          <div class="plan-price">€0<span>/maand</span></div>
+          <ul class="plan-features">
+            <li>✅ 10 vragen per dag</li>
+            <li>✅ 1 oefentoets per week</li>
+            <li>✅ Basis studieplanner</li>
+            <li>❌ Samenvattingen</li>
+            <li>❌ Foto upload</li>
+          </ul>
+          <button class="btn-plan" onclick="window.location.href='app.html'">Gratis starten</button>
+        </div>
+        <div class="pricing-card featured">
+          <div class="plan-badge">Meest populair</div>
+          <div class="plan-name">Premium</div>
+          <div class="plan-price">€4,99<span>/maand</span></div>
+          <ul class="plan-features">
+            <li>✅ Onbeperkte vragen</li>
+            <li>✅ Onbeperkte oefentoetsen</li>
+            <li>✅ Samenvattingen maken</li>
+            <li>✅ Foto upload & OCR</li>
+            <li>✅ Oudermodule</li>
+          </ul>
+          <button class="btn-plan primary" onclick="window.location.href='app.html'">Nu starten</button>
+        </div>
+        <div class="pricing-card">
+          <div class="plan-name">Gezin</div>
+          <div class="plan-price">€9,99<span>/maand</span></div>
+          <ul class="plan-features">
+            <li>✅ Alles van Premium</li>
+            <li>✅ Tot 5 kinderen</li>
+            <li>✅ Gezins-dashboard</li>
+            <li>✅ Prioriteit support</li>
+            <li>✅ Voortgangsrapporten</li>
+          </ul>
+          <button class="btn-plan" onclick="window.location.href='app.html'">Familie starten</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <div class="cta-content">
+        <h2>Klaar om slimmer te leren?</h2>
+        <p>Sluit je aan bij duizenden leerlingen die al betere cijfers halen</p>
+        <button class="btn-primary large" onclick="window.location.href='app.html'">
+          Gratis beginnen – geen creditcard nodig
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <span class="brand-name">🦉 StudyBuddy</span>
+        <p>De slimme huiswerkcoach voor Nederlandse leerlingen</p>
+      </div>
+      <div class="footer-links">
+        <span>© 2026 StudyBuddy</span>
+        <a href="#">Privacy</a>
+        <a href="#">Voorwaarden</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scroll for nav links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    // Animate stats on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.feature-card, .step, .pricing-card, .subject-chip').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
