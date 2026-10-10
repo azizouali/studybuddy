@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyBuddy – Dashboard</title>
+    <meta name="description" content="StudyBuddy AI Huiswerkcoach – jouw persoonlijke leercoach voor VMBO, HAVO en VWO">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Outfit:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles/app.css">
+</head>
+
+<body>
+
+    <!-- =============== SIDEBAR =============== -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">
+                <div class="logo-icon">🦉</div>
+                <span class="logo-text">StudyBuddy</span>
+            </div>
+            <button class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M15 18l-6-6 6-6" />
+                </svg>
+            </button>
+        </div>
+
+        <div class="user-profile">
+            <div class="avatar">
+                <span>😊</span>
+            </div>
+            <div class="user-info">
+                <span class="user-name" id="userName">Leerling</span>
+                <span class="user-level" id="userLevel">HAVO • 2e klas</span>
+            </div>
+        </div>
+
+        <div class="xp-section">
+            <div class="xp-label">
+                <span>⚡ <span id="xpPoints">750</span> XP</span>
+                <span class="level-badge">Level 5</span>
+            </div>
+            <div class="xp-bar">
+                <div class="xp-fill" id="xpBar" style="width:75%"></div>
+            </div>
+            <span class="xp-next">225 XP tot Level 6</span>
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-section-label">Leren</div>
+            <button class="nav-item active" id="nav-home" onclick="showScreen('home')">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+                    <polyline points="9,22 9,12 15,12 15,22" />
+                </svg>
+                <span>Home</span>
+            </button>
+            <button class="nav-item" id="nav-chat" onclick="showScreen('chat')">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
+                </svg>
+                <span>AI Tutor</span>
+                <span class="nav-badge new">Nieuw</span>
+            </button>
+            <button class="nav-item" id="nav-quiz" onclick="showScreen('quiz')">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01" />
+                </svg>
+                <span>Oefentoets</span>
+            </button>
+            <button class="nav-item" id="nav-summary" onclick="showScreen('summary')">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+                    <polyline points="14,2 14,8 20,8" />
+                    <line x1="16" y1="13" x2="8" y2="13" />
+                    <line x1="16" y1="17" x2="8" y2="17" />
+                    <polyline points="10,9 9,9 8,9" />
+                </svg>
+                <span>Samenvattingen</span>
+            </button>
+            <button class="nav-item" id="nav-planner" onclick="showScreen('planner')">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                    <line x1="16" y1="2" x2="16" y2="6" />
+                    <line x1="8" y1="2" x2="8" y2="6" />
+                    <line x1="3" y1="10" x2="21" y2="10" />
+                </svg>
+                <span>Studieplanner</span>
+            </button>
+
+            <div class="nav-section-label" style="margin-top:8px">Overig</div>
+            <button class="nav-item" id="nav-parent" onclick="showScreen('parent')">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                    <circle cx="9" cy="7" r="4" />
+                    <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" />
+                </svg>
+                <span>Oudermodule</span>
+            </button>
+            <button class="nav-item" id="nav-badges" onclick="showScreen('badges')">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="8" r="6" />
+                    <path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11" />
+                </svg>
+                <span>Prestaties</span>
+            </button>
+        </nav>
+
+        <div class="streak-widget">
+            <div class="streak-fire">🔥</div>
+            <div>
+                <div class="streak-num" id="streakDays">7</div>
+                <div class="streak-label">daagse streak!</div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- =============== MAIN CONTENT =============== -->
+    <main class="main-content" id="mainContent">
+
+        <!-- ===== TOPBAR ===== -->
+        <div class="topbar">
+            <button class="mobile-menu-btn" onclick="toggleSidebar()">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="3" y1="6" x2="21" y2="6" />
+                    <line x1="3" y1="12" x2="21" y2="12" />
+                    <line x1="3" y1="18" x2="21" y2="18" />
+                </svg>
+            </button>
+            <div class="topbar-title" id="topbarTitle">Home</div>
+            <div class="topbar-actions">
+                <div class="topbar-xp">⚡ <span id="topXP">750</span> XP</div>
+                <div class="topbar-streak">🔥 <span id="topStreak">7</span></div>
+                <button class="topbar-avatar" onclick="showOnboarding()">😊</button>
+            </div>
+        </div>
+
+        <!-- ===== HOME SCREEN ===== -->
+        <div class="screen active" id="screen-home">
+            <div class="home-header">
+                <div>
+                    <h1 class="greeting" id="greeting">Goedemorgen! 👋</h1>
+                    <p class="greeting-sub">Wat gaan we vandaag leren?</p>
+                </div>
+                <div class="today-goal">
+                    <div class="goal-ring">
+                        <svg width="64" height="64" viewBox="0 0 64 64">
+                            <circle cx="32" cy="32" r="26" fill="none" stroke="rgba(124,58,237,0.15)"
+                                stroke-width="6" />
+                            <circle cx="32" cy="32" r="26" fill="none" stroke="url(#goalGrad)" stroke-width="6"
+                                stroke-dasharray="163" stroke-dashoffset="57" stroke-linecap="round"
+                                transform="rotate(-90 32 32)" />
+                            <defs>
+                                <linearGradient id="goalGrad" x1="0" y1="0" x2="1" y2="0">
+                                    <stop offset="0%" stop-color="#7C3AED" />
+                                    <stop offset="100%" stop-color="#C026D3" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <div class="goal-text">65%</div>
+                    </div>
+                    <div style="text-align:right">
+                        <div style="font-size:0.85rem;font-weight:700;color:#A855F7">Dagdoel</div>
+                        <div style="font-size:0.75rem;color:var(--text-muted)">13/20 vragen</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <div class="quick-action-card" onclick="showScreen('chat')">
+                    <div class="qa-icon" style="background:linear-gradient(135deg,#7C3AED,#C026D3)">🤖</div>
+                    <div class="qa-info">
+                        <h3>Stel een vraag</h3>
+                        <p>AI Tutor staat klaar</p>
+                    </div>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
+                        <path d="M9 18l6-6-6-6" />
+                    </svg>
+                </div>
+                <div class="quick-action-card" onclick="showScreen('quiz')">
+                    <div class="qa-icon" style="background:linear-gradient(135deg,#0EA5E9,#38BDF8)">🎯</div>
+                    <div class="qa-info">
+                        <h3>Oefentoets</h3>
+                        <p>Test je kennis</p>
+                    </div>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
+                        <path d="M9 18l6-6-6-6" />
+                    </svg>
+                </div>
+                <div class="quick-action-card" onclick="showScreen('planner')">
+                    <div class="qa-icon" style="background:linear-gradient(135deg,#10B981,#34D399)">📅</div>
+                    <div class="qa-info">
+                        <h3>Studieplanner</h3>
+                        <p>Maak een plan</p>
+                    </div>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
+                        <path d="M9 18l6-6-6-6" />
+                    </svg>
+                </div>
+                <div class="quick-action-card" onclick="showScreen('summary')">
+                    <div class="qa-icon" style="background:linear-gradient(135deg,#F59E0B,#FBBF24)">📝</div>
+                    <div class="qa-info">
+                        <h3>Samenvatting</h3>
+                        <p>Upload een hoofdstuk</p>
+                    </div>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
+                        <path d="M9 18l6-6-6-6" />
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Today's Plan -->
+            <div class="home-sections-grid">
+                <div class="home-card">
+                    <div class="card-header">
+                        <h2>📋 Vandaag leren</h2>
+                        <button class="card-btn" onclick="showScreen('planner')">Aanpassen</button>
+                    </div>
+                    <div class="today-tasks" id="todayTasks">
+                        <div class="task-item">
+                            <div class="task-check done">✓</div>
+                            <div class="task-info">
+                                <span class="task-name">Wiskunde: Vergelijkingen</span>
+                                <span class="task-time">20 min</span>
+                            </div>
+                            <span class="task-status done">Klaar!</span>
+                        </div>
+                        <div class="task-item active">
+                            <div class="task-check current">▶</div>
+                            <div class="task-info">
+                                <span class="task-name">Geschiedenis H4: WO2</span>
+                                <span class="task-time">30 min</span>
+                            </div>
+                            <button class="task-start" onclick="startTask('history')">Start →</button>
+                        </div>
+                        <div class="task-item">
+                            <div class="task-check todo">○</div>
+                            <div class="task-info">
+                                <span class="task-name">Engels: Woordjes uit H7</span>
+                                <span class="task-time">15 min</span>
+                            </div>
+                            <span class="task-status todo">Gepland</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="home-card">
+                    <div class="card-header">
+                        <h2>🏆 Jouw badges</h2>
+                        <button class="card-btn" onclick="showScreen('badges')">Alle badges</button>
+                    </div>
+                    <div class="badges-preview">
+                        <div class="badge-item earned" title="7 dagen geleerd">
+                            <div class="badge-icon">🔥</div>
+                            <span>Doorzetterr</span>
+                        </div>
+                        <div class="badge-item earned" title="10 oefentoetsen">
+                            <div class="badge-icon">🎯</div>
+                            <span>Toetsmeester</span>
+                        </div>
+                        <div class="badge-item earned" title="Wiskunde expert">
+                            <div class="badge-icon">📐</div>
+                            <span>Wiskundig</span>
+                        </div>
+                        <div class="badge-item" title="100 vragen opgelost (53/100)">
+                            <div class="badge-icon locked">🔒</div>
+                            <span>Vraagkraker</span>
+                        </div>
+                        <div class="badge-item" title="Perfecte week">
+                            <div class="badge-icon locked">🔒</div>
+                            <span>Perfecte week</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Subjects -->
+            <div class="home-card" style="margin-top:0">
+                <div class="card-header">
+                    <h2>📚 Recente vakken</h2>
+                </div>
+                <div class="subjects-row">
+                    <div class="subject-progress-card" onclick="startSubject('wiskunde')">
+                        <div class="sp-icon">📐</div>
+                        <div class="sp-info">
+                            <span class="sp-name">Wiskunde</span>
+                            <div class="sp-bar">
+                                <div class="sp-fill"
+                                    style="width:78%;background:linear-gradient(90deg,#7C3AED,#A855F7)"></div>
+                            </div>
+                            <span class="sp-score">78% beheersing</span>
+                        </div>
+                    </div>
+                    <div class="subject-progress-card" onclick="startSubject('engels')">
+                        <div class="sp-icon">🇬🇧</div>
+                        <div class="sp-info">
+                            <span class="sp-name">Engels</span>
+                            <div class="sp-bar">
+                                <div class="sp-fill"
+                                    style="width:85%;background:linear-gradient(90deg,#0EA5E9,#38BDF8)"></div>
+                            </div>
+                            <span class="sp-score">85% beheersing</span>
+                        </div>
+                    </div>
+                    <div class="subject-progress-card" onclick="startSubject('geschiedenis')">
+                        <div class="sp-icon">📜</div>
+                        <div class="sp-info">
+                            <span class="sp-name">Geschiedenis</span>
+                            <div class="sp-bar">
+                                <div class="sp-fill"
+                                    style="width:62%;background:linear-gradient(90deg,#F59E0B,#FBBF24)"></div>
+                            </div>
+                            <span class="sp-score">62% beheersing</span>
+                        </div>
+                    </div>
+                    <div class="subject-progress-card" onclick="startSubject('biologie')">
+                        <div class="sp-icon">🔬</div>
+                        <div class="sp-info">
+                            <span class="sp-name">Biologie</span>
+                            <div class="sp-bar">
+                                <div class="sp-fill"
+                                    style="width:45%;background:linear-gradient(90deg,#10B981,#34D399)"></div>
+                            </div>
+                            <span class="sp-score">45% beheersing</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== CHAT SCREEN ===== -->
+        <div class="screen" id="screen-chat">
+            <div class="chat-layout">
+                <!-- Chat sidebar subject picker -->
+                <div class="chat-sidebar">
+                    <h3 class="chat-sidebar-title">Vak kiezen</h3>
+                    <div class="subject-list" id="subjectList">
+                        <button class="subject-btn active" onclick="selectSubject('Wiskunde', this)">📐
+                            Wiskunde</button>
+                        <button class="subject-btn" onclick="selectSubject('Nederlands', this)">📚 Nederlands</button>
+                        <button class="subject-btn" onclick="selectSubject('Engels', this)">🇬🇧 Engels</button>
+                        <button class="subject-btn" onclick="selectSubject('Geschiedenis', this)">📜
+                            Geschiedenis</button>
+                        <button class="subject-btn" onclick="selectSubject('Biologie', this)">🔬 Biologie</button>
+                        <button class="subject-btn" onclick="selectSubject('Scheikunde', this)">⚗️ Scheikunde</button>
+                        <button class="subject-btn" onclick="selectSubject('Aardrijkskunde', this)">🌍
+                            Aardrijkskunde</button>
+                        <button class="subject-btn" onclick="selectSubject('Duits', this)">🇩🇪 Duits</button>
+                        <button class="subject-btn" onclick="selectSubject('Frans', this)">🇫🇷 Frans</button>
+                        <button class="subject-btn" onclick="selectSubject('Economie', this)">💰 Economie</button>
+                        <button class="subject-btn" onclick="selectSubject('Natuurkunde', this)">⚡ Natuurkunde</button>
+                    </div>
+
+                    <div class="chat-mode-picker">
+                        <h3 class="chat-sidebar-title">Modus</h3>
+                        <button class="mode-btn active" id="mode-tutor" onclick="selectMode('tutor')">
+                            <span>🎓</span> Uitleg
+                        </button>
+                        <button class="mode-btn" id="mode-quiz" onclick="selectMode('quiz-chat')">
+                            <span>🎯</span> Overhoren
+                        </button>
+                        <button class="mode-btn" id="mode-motivate" onclick="selectMode('motivate')">
+                            <span>💪</span> Motivatie
+                        </button>
+                    </div>
+
+                    <button class="new-chat-btn" onclick="newChat()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <line x1="12" y1="5" x2="12" y2="19" />
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                        </svg>
+                        Nieuw gesprek
+                    </button>
+                </div>
+
+                <!-- Chat main area -->
+                <div class="chat-main">
+                    <div class="chat-header-bar">
+                        <div class="chat-subject-badge" id="chatSubjectBadge">📐 Wiskunde</div>
+                        <div class="chat-mode-badge" id="chatModeBadge">🎓 Uitleg modus</div>
+                    </div>
+
+                    <div class="messages-container" id="messagesContainer">
+                        <div class="msg-group ai-group">
+                            <div class="msg-avatar">🦉</div>
+                            <div class="messages">
+                                <div class="message ai-msg" id="welcomeMsg">
+                                    Hoi! Ik ben je StudyBuddy voor <strong>Wiskunde</strong>! 🎉<br><br>
+                                    Wat wil je vandaag leren of oefenen? Je kunt ook een foto van je huiswerk uploaden,
+                                    dan analyseer ik het voor jou!
+                                </div>
+                                <div class="msg-suggestions">
+                                    <button class="suggestion"
+                                        onclick="sendSuggestion('Ik snap vergelijkingen niet')">Vergelijkingen
+                                        uitleggen</button>
+                                    <button class="suggestion"
+                                        onclick="sendSuggestion('Overhoor mij over wiskunde')">Overhoor mij</button>
+                                    <button class="suggestion"
+                                        onclick="sendSuggestion('Geef mij een moeilijke opgave')">Geef een
+                                        opgave</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Upload area -->
+                    <div class="upload-bar" id="uploadBar" onclick="openUpload()">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" />
+                            <circle cx="8.5" cy="8.5" r="1.5" />
+                            <path d="M21 15l-5-5L5 21" />
+                        </svg>
+                        Foto of screenshot van huiswerk uploaden
+                    </div>
+
+                    <div class="chat-input-container">
+                        <div class="chat-input-wrapper">
+                            <button class="input-action-btn" onclick="openUpload()" title="Afbeelding uploaden">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                                    <circle cx="8.5" cy="8.5" r="1.5" />
+                                    <path d="M21 15l-5-5L5 21" />
+                                </svg>
+                            </button>
+                            <textarea id="chatInput" class="chat-input" placeholder="Stel een vraag over je huiswerk..."
+                                rows="1" onkeydown="handleChatKey(event)" oninput="autoResize(this)"></textarea>
+                            <button class="send-btn" id="sendBtn" onclick="sendMessage()">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+                                </svg>
+                            </button>
+                        </div>
+                        <p class="chat-disclaimer">StudyBuddy geeft nooit direct antwoorden – we leren samen! 🦉</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hidden upload input -->
+            <input type="file" id="fileInput" accept="image/*" style="display:none" onchange="handleFileUpload(event)">
+
+            <!-- Upload preview modal -->
+            <div class="modal-overlay" id="uploadModal" style="display:none">
+                <div class="modal">
+                    <div class="modal-header">
+                        <h3>📸 Huiswerk uploaden</h3>
+                        <button onclick="closeModal('uploadModal')">✕</button>
+                    </div>
+                    <div class="upload-area" id="uploadArea" onclick="document.getElementById('fileInput').click()">
+                        <div class="upload-icon">📤</div>
+                        <p>Klik om een foto te kiezen</p>
+                        <p class="upload-sub">of sleep een afbeelding hiernaartoe</p>
+                    </div>
+                    <div id="uploadPreview" style="display:none">
+                        <img id="previewImg" style="max-width:100%;border-radius:12px;margin-bottom:12px">
+                        <button class="btn-analyze" onclick="analyzeImage()">🔍 Analyseer huiswerk</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== QUIZ SCREEN ===== -->
+        <div class="screen" id="screen-quiz">
+            <div class="quiz-container">
+                <!-- Quiz Setup -->
+                <div class="quiz-setup" id="quizSetup">
+                    <h1 class="screen-title">🎯 Oefentoets genereren</h1>
+                    <div class="setup-grid">
+                        <div class="setup-card">
+                            <label class="setup-label">Vak</label>
+                            <select class="setup-select" id="quizSubject">
+                                <option value="wiskunde">📐 Wiskunde</option>
+                                <option value="nederland">📚 Nederlands</option>
+                                <option value="engels">🇬🇧 Engels</option>
+                                <option value="geschiedenis">📜 Geschiedenis</option>
+                                <option value="biologie">🔬 Biologie</option>
+                                <option value="scheikunde">⚗️ Scheikunde</option>
+                                <option value="aardrijkskunde">🌍 Aardrijkskunde</option>
+                            </select>
+                        </div>
+                        <div class="setup-card">
+                            <label class="setup-label">Niveau</label>
+                            <div class="level-buttons">
+                                <button class="level-btn active" id="lvl-easy" onclick="selectLevel('easy')">🟢
+                                    Makkelijk</button>
+                                <button class="level-btn" id="lvl-medium" onclick="selectLevel('medium')">🟡
+                                    Gemiddeld</button>
+                                <button class="level-btn" id="lvl-hard" onclick="selectLevel('hard')">🔴
+                                    Moeilijk</button>
+                            </div>
+                        </div>
+                        <div class="setup-card">
+                            <label class="setup-label">Aantal vragen</label>
+                            <div class="num-buttons">
+                                <button class="num-btn active" onclick="selectNum(5,this)">5</button>
+                                <button class="num-btn" onclick="selectNum(10,this)">10</button>
+                                <button class="num-btn" onclick="selectNum(15,this)">15</button>
+                                <button class="num-btn" onclick="selectNum(20,this)">20</button>
+                            </div>
+                        </div>
+                        <div class="setup-card">
+                            <label class="setup-label">Vraagtypes</label>
+                            <div class="type-checkboxes">
+                                <label class="type-check"><input type="checkbox" checked id="typeMulti">
+                                    Meerkeuzevragen</label>
+                                <label class="type-check"><input type="checkbox" checked id="typeOpen"> Open
+                                    vragen</label>
+                                <label class="type-check"><input type="checkbox" id="typeFill"> Invuloefeningen</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="topic-input-wrap">
+                        <label class="setup-label">Onderwerp (optioneel)</label>
+                        <input type="text" class="topic-input" id="quizTopic"
+                            placeholder="Bijv. 'Hoofdstuk 3: Vergelijkingen' of 'WO2 oorzaken'">
+                    </div>
+                    <button class="btn-start-quiz" onclick="startQuiz()">
+                        🚀 Toets starten
+                    </button>
+                </div>
+
+                <!-- Quiz Active -->
+                <div class="quiz-active" id="quizActive" style="display:none">
+                    <div class="quiz-progress-header">
+                        <span class="quiz-meta" id="quizMeta">Wiskunde • Gemiddeld</span>
+                        <div class="quiz-prog-bar">
+                            <div class="quiz-prog-fill" id="quizProgFill"></div>
+                        </div>
+                        <span class="quiz-counter" id="quizCounter">Vraag 1/10</span>
+                    </div>
+                    <div class="quiz-card" id="quizCard">
+                        <div class="quiz-type-badge" id="quizTypeBadge">Meerkeuze</div>
+                        <div class="quiz-question" id="quizQuestion"></div>
+                        <div class="quiz-options" id="quizOptions"></div>
+                        <div class="quiz-open-input" id="quizOpenInput" style="display:none">
+                            <textarea class="open-answer-input" id="openAnswerInput"
+                                placeholder="Typ jouw antwoord hier..."></textarea>
+                            <button class="btn-submit-answer" onclick="submitAnswer()">Controleer →</button>
+                        </div>
+                        <div class="quiz-feedback" id="quizFeedback" style="display:none"></div>
+                    </div>
+                    <div class="quiz-actions">
+                        <button class="quiz-hint-btn" onclick="showHint()">💡 Hint</button>
+                        <button class="quiz-next-btn" id="quizNextBtn" style="display:none"
+                            onclick="nextQuestion()">Volgende vraag →</button>
+                    </div>
+                </div>
+
+                <!-- Quiz Results -->
+                <div class="quiz-results" id="quizResults" style="display:none">
+                    <div class="results-header">
+                        <div class="results-trophy" id="resultsTrophy">🏆</div>
+                        <h2 class="results-title" id="resultsTitle">Geweldig gedaan!</h2>
+                        <div class="results-score" id="resultsScore">8<span>/10</span></div>
+                        <p class="results-sub" id="resultsSub">Uitstekend resultaat! Je begrijpt de stof goed.</p>
+                    </div>
+                    <div class="results-breakdown" id="resultsBreakdown"></div>
+                    <div class="results-actions">
+                        <button class="results-btn primary" onclick="startQuiz()">🔄 Nieuwe toets</button>
+                        <button class="results-btn" onclick="reviewAnswers()">📋 Bekijk antwoorden</button>
+                        <button class="results-btn" onclick="showScreen('chat')">🤖 Vraag uitleg</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== SUMMARY SCREEN ===== -->
+        <div class="screen" id="screen-summary">
+            <h1 class="screen-title">📝 Samenvattingen</h1>
+
+            <div class="summary-layout">
+                <!-- Upload / Create -->
+                <div class="summary-creator">
+                    <div class="creator-tabs">
+                        <button class="creator-tab active" id="tab-upload" onclick="switchSummaryTab('upload')">📸
+                            Upload tekst</button>
+                        <button class="creator-tab" id="tab-create" onclick="switchSummaryTab('create')">✏️ Maak
+                            zelf</button>
+                    </div>
+
+                    <div class="tab-content" id="tab-upload-content">
+                        <div class="upload-drop-zone" id="summaryDropZone"
+                            onclick="document.getElementById('summaryFile').click()">
+                            <div class="upload-drop-icon">📄</div>
+                            <p>Sleep een foto van je schrift of<br>aantekeningen hiernaartoe</p>
+                            <p class="upload-sub">of klik om te bladeren</p>
+                        </div>
+                        <input type="file" id="summaryFile" style="display:none" accept="image/*,.pdf,.txt"
+                            onchange="handleSummaryFile(event)">
+                        <div class="summary-info-inputs">
+                            <input type="text" class="setup-input" id="sumSubject" placeholder="Vak (bijv. Biologie)">
+                            <input type="text" class="setup-input" id="sumChapter" placeholder="Hoofdstuk of onderwerp">
+                        </div>
+                        <button class="btn-generate-summary" onclick="generateSummary()">✨ Samenvatting
+                            genereren</button>
+                    </div>
+
+                    <div class="tab-content" id="tab-create-content" style="display:none">
+                        <textarea class="summary-text-input" id="summaryText"
+                            placeholder="Plak hier je aantekeningen of de tekst die je wilt samenvatten..."></textarea>
+                        <div class="summary-info-inputs">
+                            <input type="text" class="setup-input" id="sumSubject2" placeholder="Vak">
+                            <input type="text" class="setup-input" id="sumChapter2" placeholder="Onderwerp">
+                        </div>
+                        <button class="btn-generate-summary" onclick="generateSummaryFromText()">✨ Samenvatting
+                            genereren</button>
+                    </div>
+                </div>
+
+                <!-- Saved summaries -->
+                <div class="saved-summaries">
+                    <h3 class="saved-title">Opgeslagen samenvattingen</h3>
+                    <div class="summary-list" id="summaryList">
+                        <div class="summary-item" onclick="openSummary(0)">
+                            <div class="sum-icon">📐</div>
+                            <div class="sum-info">
+                                <span class="sum-name">Wiskunde H3: Lineaire Vergelijkingen</span>
+                                <span class="sum-meta">Gemaakt: 8 okt • 12 begrippen</span>
+                            </div>
+                            <button class="sum-action">→</button>
+                        </div>
+                        <div class="summary-item" onclick="openSummary(1)">
+                            <div class="sum-icon">📜</div>
+                            <div class="sum-info">
+                                <span class="sum-name">Geschiedenis H4: Tweede Wereldoorlog</span>
+                                <span class="sum-meta">Gemaakt: 6 okt • 18 begrippen</span>
+                            </div>
+                            <button class="sum-action">→</button>
+                        </div>
+                        <div class="summary-item" onclick="openSummary(2)">
+                            <div class="sum-icon">🔬</div>
+                            <div class="sum-info">
+                                <span class="sum-name">Biologie H2: Cellen en Weefsels</span>
+                                <span class="sum-meta">Gemaakt: 4 okt • 15 begrippen</span>
+                            </div>
+                            <button class="sum-action">→</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Summary Result Modal -->
+            <div class="modal-overlay" id="summaryModal" style="display:none">
+                <div class="modal large-modal">
+                    <div class="modal-header">
+                        <h3>📝 Jouw samenvatting</h3>
+                        <button onclick="closeModal('summaryModal')">✕</button>
+                    </div>
+                    <div class="summary-result" id="summaryResult"></div>
+                    <div class="summary-modal-actions">
+                        <button class="modal-btn" onclick="generateFlashcards()">🃏 Maak flashcards</button>
+                        <button class="modal-btn primary" onclick="practiceFromSummary()">🎯 Oefen nu</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== PLANNER SCREEN ===== -->
+        <div class="screen" id="screen-planner">
+            <h1 class="screen-title">📅 Studieplanner</h1>
+
+            <div class="planner-layout">
+                <!-- Add exam -->
+                <div class="add-exam-card">
+                    <h3>➕ Toets toevoegen</h3>
+                    <div class="exam-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Vak</label>
+                                <select class="setup-select" id="examSubject">
+                                    <option value="wiskunde">📐 Wiskunde</option>
+                                    <option value="nederlands">📚 Nederlands</option>
+                                    <option value="engels">🇬🇧 Engels</option>
+                                    <option value="geschiedenis">📜 Geschiedenis</option>
+                                    <option value="biologie">🔬 Biologie</option>
+                                    <option value="scheikunde">⚗️ Scheikunde</option>
+                                    <option value="aardrijkskunde">🌍 Aardrijkskunde</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Toetsdatum</label>
+                                <input type="date" class="setup-select" id="examDate">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Hoofdstukken / onderwerpen</label>
+                            <input type="text" class="setup-input" id="examChapters" placeholder="Bijv. H3, H4, H5">
+                        </div>
+                        <div class="form-group">
+                            <label>Moeilijkheidsgraad</label>
+                            <div class="difficulty-btns">
+                                <button class="diff-btn active" id="diff-easy"
+                                    onclick="selectDiff('easy')">Makkelijk</button>
+                                <button class="diff-btn" id="diff-medium"
+                                    onclick="selectDiff('medium')">Gemiddeld</button>
+                                <button class="diff-btn" id="diff-hard" onclick="selectDiff('hard')">Moeilijk</button>
+                            </div>
+                        </div>
+                        <button class="btn-create-plan" onclick="createStudyPlan()">📅 Plan aanmaken</button>
+                    </div>
+                </div>
+
+                <!-- Study plan display -->
+                <div class="study-plan" id="studyPlan">
+                    <h3>📋 Jouw studieplan</h3>
+                    <div class="plan-weeks" id="planWeeks">
+                        <div class="week-block">
+                            <div class="week-header">
+                                <span class="week-label">Deze week</span>
+                                <span class="week-dates">7 okt – 13 okt</span>
+                            </div>
+                            <div class="plan-days">
+                                <div class="plan-day done">
+                                    <div class="day-name">Ma</div>
+                                    <div class="day-tasks">
+                                        <div class="plan-task done-task">✓ Wiskunde: H3 lezen <span class="task-dur">20
+                                                min</span></div>
+                                    </div>
+                                </div>
+                                <div class="plan-day done">
+                                    <div class="day-name">Di</div>
+                                    <div class="day-tasks">
+                                        <div class="plan-task done-task">✓ Wiskunde: Oefenopgaven <span
+                                                class="task-dur">30 min</span></div>
+                                    </div>
+                                </div>
+                                <div class="plan-day current">
+                                    <div class="day-name">Wo</div>
+                                    <div class="day-tasks">
+                                        <div class="plan-task current-task">▶ Geschiedenis: H4 samenvatten <span
+                                                class="task-dur">25 min</span></div>
+                                    </div>
+                                </div>
+                                <div class="plan-day">
+                                    <div class="day-name">Do</div>
+                                    <div class="day-tasks">
+                                        <div class="plan-task">○ Wiskunde: Oefentoets <span class="task-dur">30
+                                                min</span></div>
+                                    </div>
+                                </div>
+                                <div class="plan-day">
+                                    <div class="day-name">Vr</div>
+                                    <div class="day-tasks">
+                                        <div class="plan-task">○ Engels: Woordjes leren <span class="task-dur">20
+                                                min</span></div>
+                                        <div class="plan-task">○ Geschiedenis: Herhaling <span class="task-dur">15
+                                                min</span></div>
+                                    </div>
+                                </div>
+                                <div class="plan-day weekend">
+                                    <div class="day-name">Za</div>
+                                    <div class="day-tasks">
+                                        <div class="plan-task">○ Vrije dag 🌟</div>
+                                    </div>
+                                </div>
+                                <div class="plan-day weekend">
+                                    <div class="day-name">Zo</div>
+                                    <div class="day-tasks">
+                                        <div class="plan-task">○ Snel doornemen <span class="task-dur">15 min</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Upcoming exams -->
+                    <div class="upcoming-exams">
+                        <h4>📌 Geplande toetsen</h4>
+                        <div class="exam-list" id="examList">
+                            <div class="exam-item">
+                                <div class="exam-icon">📐</div>
+                                <div class="exam-info">
+                                    <span class="exam-name">Wiskunde – H3-H5</span>
+                                    <span class="exam-date">14 oktober 2026</span>
+                                </div>
+                                <div class="exam-countdown">
+                                    <span class="countdown-num">4</span>
+                                    <span class="countdown-label">dagen</span>
+                                </div>
+                            </div>
+                            <div class="exam-item">
+                                <div class="exam-icon">📜</div>
+                                <div class="exam-info">
+                                    <span class="exam-name">Geschiedenis – WO2</span>
+                                    <span class="exam-date">18 oktober 2026</span>
+                                </div>
+                                <div class="exam-countdown">
+                                    <span class="countdown-num">8</span>
+                                    <span class="countdown-label">dagen</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== PARENT SCREEN ===== -->
+        <div class="screen" id="screen-parent">
+            <h1 class="screen-title">👨‍👩‍👧 Oudermodule</h1>
+            <div class="parent-dashboard">
+
+                <div class="parent-overview">
+                    <div class="parent-stat-card">
+                        <div class="pstat-icon" style="color:#7C3AED">📊</div>
+                        <div class="pstat-num">47</div>
+                        <div class="pstat-label">Sessies totaal</div>
+                    </div>
+                    <div class="parent-stat-card">
+                        <div class="pstat-icon" style="color:#0EA5E9">⏱️</div>
+                        <div class="pstat-num">23u</div>
+                        <div class="pstat-label">Studietijd</div>
+                    </div>
+                    <div class="parent-stat-card">
+                        <div class="pstat-icon" style="color:#10B981">📝</div>
+                        <div class="pstat-num">138</div>
+                        <div class="pstat-label">Vragen beantwoord</div>
+                    </div>
+                    <div class="parent-stat-card">
+                        <div class="pstat-icon" style="color:#F59E0B">🔥</div>
+                        <div class="pstat-num">7</div>
+                        <div class="pstat-label">Huidige streak</div>
+                    </div>
+                </div>
+
+                <div class="parent-grid">
+                    <!-- Performance -->
+                    <div class="parent-card">
+                        <h3>📈 Vakprestaties</h3>
+                        <div class="performance-list">
+                            <div class="perf-item excellent">
+                                <span class="perf-subject">🇬🇧 Engels</span>
+                                <div class="perf-bar-wrap">
+                                    <div class="perf-bar"
+                                        style="width:85%;background:linear-gradient(90deg,#10B981,#34D399)"></div>
+                                </div>
+                                <span class="perf-score">85%</span>
+                            </div>
+                            <div class="perf-item excellent">
+                                <span class="perf-subject">📜 Geschiedenis</span>
+                                <div class="perf-bar-wrap">
+                                    <div class="perf-bar"
+                                        style="width:80%;background:linear-gradient(90deg,#10B981,#34D399)"></div>
+                                </div>
+                                <span class="perf-score">80%</span>
+                            </div>
+                            <div class="perf-item good">
+                                <span class="perf-subject">📐 Wiskunde</span>
+                                <div class="perf-bar-wrap">
+                                    <div class="perf-bar"
+                                        style="width:78%;background:linear-gradient(90deg,#7C3AED,#A855F7)"></div>
+                                </div>
+                                <span class="perf-score">78%</span>
+                            </div>
+                            <div class="perf-item needs-work">
+                                <span class="perf-subject">🔬 Biologie</span>
+                                <div class="perf-bar-wrap">
+                                    <div class="perf-bar"
+                                        style="width:45%;background:linear-gradient(90deg,#F59E0B,#FBBF24)"></div>
+                                </div>
+                                <span class="perf-score">45%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Insights -->
+                    <div class="parent-card">
+                        <h3>💡 Aandachtspunten</h3>
+                        <div class="insights">
+                            <div class="insight good">
+                                <span class="insight-icon">⭐</span>
+                                <div>
+                                    <strong>Sterk:</strong> Engels en Geschiedenis gaan uitstekend! Blijf zo doorgaan.
+                                </div>
+                            </div>
+                            <div class="insight warn">
+                                <span class="insight-icon">⚠️</span>
+                                <div>
+                                    <strong>Extra aandacht:</strong> Biologie verdient meer studietijd. We adviseren
+                                    dagelijks 20 minuten.
+                                </div>
+                            </div>
+                            <div class="insight info">
+                                <span class="insight-icon">📆</span>
+                                <div>
+                                    <strong>Aankomende toets:</strong> Wiskunde op 14 oktober – studieplan is
+                                    aangemaakt.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Weekly activity -->
+                    <div class="parent-card full-width-card">
+                        <h3>📅 Activiteit deze week</h3>
+                        <div class="activity-chart">
+                            <div class="activity-bar-group">
+                                <div class="activity-bar" style="height:20px"></div>
+                                <span>Ma</span>
+                            </div>
+                            <div class="activity-bar-group">
+                                <div class="activity-bar" style="height:45px"></div>
+                                <span>Di</span>
+                            </div>
+                            <div class="activity-bar-group">
+                                <div class="activity-bar active" style="height:70px"></div>
+                                <span>Wo</span>
+                            </div>
+                            <div class="activity-bar-group">
+                                <div class="activity-bar" style="height:30px"></div>
+                                <span>Do</span>
+                            </div>
+                            <div class="activity-bar-group">
+                                <div class="activity-bar" style="height:55px"></div>
+                                <span>Vr</span>
+                            </div>
+                            <div class="activity-bar-group">
+                                <div class="activity-bar" style="height:10px"></div>
+                                <span>Za</span>
+                            </div>
+                            <div class="activity-bar-group">
+                                <div class="activity-bar" style="height:0"></div>
+                                <span>Zo</span>
+                            </div>
+                        </div>
+                        <div class="chart-legend">Minuten studietijd per dag</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== BADGES SCREEN ===== -->
+        <div class="screen" id="screen-badges">
+            <h1 class="screen-title">🏆 Jouw prestaties</h1>
+            <div class="level-header">
+                <div class="big-level-badge">Level 5</div>
+                <div class="level-progress-info">
+                    <span>750 / 1000 XP voor Level 6</span>
+                    <div class="level-xp-bar">
+                        <div class="level-xp-fill" style="width:75%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="badges-section">
+                <h3 class="badges-section-title">✅ Behaald</h3>
+                <div class="badges-grid">
+                    <div class="badge-card earned">
+                        <div class="badge-big-icon">🔥</div>
+                        <h4>Doorzetter</h4>
+                        <p>7 dagen achter elkaar geleerd</p>
+                        <span class="badge-xp">+50 XP</span>
+                    </div>
+                    <div class="badge-card earned">
+                        <div class="badge-big-icon">🎯</div>
+                        <h4>Toetsmeester</h4>
+                        <p>10 oefentoetsen gemaakt</p>
+                        <span class="badge-xp">+75 XP</span>
+                    </div>
+                    <div class="badge-card earned">
+                        <div class="badge-big-icon">📐</div>
+                        <h4>Wiskundig</h4>
+                        <p>Wiskunde score boven 75%</p>
+                        <span class="badge-xp">+40 XP</span>
+                    </div>
+                    <div class="badge-card earned">
+                        <div class="badge-big-icon">⚡</div>
+                        <h4>Snelle starter</h4>
+                        <p>Eerste dag 5 vragen beantwoord</p>
+                        <span class="badge-xp">+25 XP</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="badges-section">
+                <h3 class="badges-section-title">🔒 Nog te verdienen</h3>
+                <div class="badges-grid">
+                    <div class="badge-card locked-card">
+                        <div class="badge-big-icon">💯</div>
+                        <h4>Vraagkraker</h4>
+                        <p>100 vragen oplossen <span class="badge-progress">53/100</span></p>
+                        <div class="badge-progress-bar">
+                            <div style="width:53%"></div>
+                        </div>
+                    </div>
+                    <div class="badge-card locked-card">
+                        <div class="badge-big-icon">📅</div>
+                        <h4>Perfecte week</h4>
+                        <p>7 dagen op rij studeren</p>
+                        <span class="badge-progress">7/7</span>
+                    </div>
+                    <div class="badge-card locked-card">
+                        <div class="badge-big-icon">🌟</div>
+                        <h4>Allrounder</h4>
+                        <p>5 vakken boven 70%</p>
+                        <span class="badge-progress">2/5</span>
+                    </div>
+                    <div class="badge-card locked-card">
+                        <div class="badge-big-icon">🦉</div>
+                        <h4>Wijze Uil</h4>
+                        <p>Level 10 bereiken</p>
+                        <span class="badge-progress">Level 5/10</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ===== ONBOARDING MODAL ===== -->
+    <div class="modal-overlay" id="onboardingModal" style="display:none">
+        <div class="modal onboarding-modal">
+            <div class="onboarding-step" id="onboard-step-1">
+                <div class="onboarding-emoji">👋</div>
+                <h2>Welkom bij StudyBuddy!</h2>
+                <p>Laten we jouw profiel instellen zodat we het beste voor jou kunnen doen.</p>
+                <div class="onboard-form">
+                    <input type="text" class="setup-input" id="onboardName" placeholder="Jouw voornaam">
+                    <select class="setup-select" id="onboardLevel">
+                        <option value="">Kies jouw schooltype</option>
+                        <option>VMBO – 1e klas (12 jaar)</option>
+                        <option>VMBO – 2e klas (13 jaar)</option>
+                        <option>VMBO – 3e klas (14 jaar)</option>
+                        <option>HAVO – 1e klas (12 jaar)</option>
+                        <option>HAVO – 2e klas (13 jaar)</option>
+                        <option selected>HAVO – 3e klas (14 jaar)</option>
+                        <option>VWO – 1e klas (12 jaar)</option>
+                        <option>VWO – 2e klas (13 jaar)</option>
+                        <option>VWO – 3e klas (14 jaar)</option>
+                    </select>
+                    <div class="form-group">
+                        <label
+                            style="font-size:0.9rem;color:var(--text-muted);margin-bottom:8px;display:block">Favoriete
+                            vakken</label>
+                        <div class="chip-select" id="favSubjects">
+                            <span class="chip" onclick="toggleChip(this)">📐 Wiskunde</span>
+                            <span class="chip active" onclick="toggleChip(this)">🇬🇧 Engels</span>
+                            <span class="chip" onclick="toggleChip(this)">📜 Geschiedenis</span>
+                            <span class="chip" onclick="toggleChip(this)">🔬 Biologie</span>
+                            <span class="chip" onclick="toggleChip(this)">📚 Nederlands</span>
+                            <span class="chip active" onclick="toggleChip(this)">🌍 Aardrijkskunde</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn-onboard-next" onclick="saveProfile()">Laten we beginnen 🚀</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== XP GAIN TOAST ===== -->
+    <div class="xp-toast" id="xpToast">
+        <span class="xp-toast-icon">⚡</span>
+        <span id="xpToastText">+10 XP verdiend!</span>
+    </div>
+
+    <!-- ===== STREAK ACHIEVEMENT TOAST ===== -->
+    <div class="achievement-toast" id="achievementToast" style="display:none">
+        <span id="achievementIcon">🏆</span>
+        <div>
+            <strong id="achievementTitle">Badge verdiend!</strong>
+            <span id="achievementSub">Doorzetter unlocked</span>
+        </div>
+    </div>
+
+    <script src="scripts/app2.js"></script>
+</body>
+
+</html>
